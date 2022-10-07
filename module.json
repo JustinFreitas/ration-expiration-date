@@ -1,7 +1,7 @@
 {
-    "id": "module-file-structure-template",
-    "title": "Module File Structure Template",
-    "description": "A simple module created as a demo for working in the Foundry Virtual Tabletop framework.",
+    "id": "ration-expiration-date",
+    "title": "Ration Expiration Date",
+    "description": "When dropping iron or standard rations into an inventory, this module will add a date to the title that is four or two weeks out, respectively.",
     "authors": [
         {
             "name": "Justin Freitas"
@@ -13,6 +13,6 @@
         "verified": "10"
     },
     "scripts": [
-        "scripts/script.js"
+        "scripts/ration-expiration-date.js"
       ]
 }
