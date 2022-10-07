@@ -15,5 +15,5 @@
     "scripts": [
         "scripts/ration-expiration-date.js"
       ],
-    "manifest": "https://github.com/JustinFreitas/ration-expiration-date/releases/download/latest/module.json"
+    "manifest": "https://github.com/JustinFreitas/ration-expiration-date/releases/download/1.0.0/module.json"
 }
