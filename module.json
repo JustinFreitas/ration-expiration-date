@@ -13,6 +13,6 @@
     ],
     "system": ["ose"],
     "url": "https://github.com/JustinFreitas/ration-expiration-date/",
-    "manifest": "https://github.com/JustinFreitas/ration-expiration-date/releases/latest/download/module.json",
+    "manifest": "https://raw.githubusercontent.com/JustinFreitas/ration-expiration-date/master/module.json",
     "download": "https://github.com/JustinFreitas/ration-expiration-date/releases/download/1.0.0/ration-expiration-date.zip"
 }
