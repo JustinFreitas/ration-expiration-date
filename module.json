@@ -1,0 +1,18 @@
+{
+    "id": "module-file-structure-template",
+    "title": "Module File Structure Template",
+    "description": "A simple module created as a demo for working in the Foundry Virtual Tabletop framework.",
+    "authors": [
+        {
+            "name": "Justin Freitas"
+        }
+    ],
+    "version": "1.0.0",
+    "compatibility": {
+        "minimum": "9",
+        "verified": "10"
+    },
+    "scripts": [
+        "scripts/script.js"
+      ]
+}
