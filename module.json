@@ -14,7 +14,7 @@
         "verified": "10",
         "maximum": "10"
     },
-    "compatibleCoreVersion": "10",
+    "compatibleCoreVersion": "9",
     "scripts": [
         "scripts/ration-expiration-date.js"
     ],
