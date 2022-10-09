@@ -52,22 +52,20 @@ Hooks.on('init', function() {
 });
   
 Hooks.on('preCreateItem', (document) => {
-    if (document?.type === 'item') {
-        const moduleName = 'ration-expiration-date';
-        const ironRationsItemName = game.settings.get(moduleName, 'ironRationsItemName');
-        const standardRationsItemName = game.settings.get(moduleName, 'standardRationsItemName');
+    const moduleName = 'ration-expiration-date';
+    const ironRationsItemName = game.settings.get(moduleName, 'ironRationsItemName');
+    const standardRationsItemName = game.settings.get(moduleName, 'standardRationsItemName');
 
-        if (document.name === ironRationsItemName
-            || document.name === standardRationsItemName) {
-            const day = 8.64e+7;
-            const ironRationsExpireDays = game.settings.get(moduleName, 'ironRationsExpireDays');
-            const standardRationsExpireDays = game.settings.get(moduleName, 'standardRationsExpireDays');
-            const expirationDateValue = document.name === standardRationsItemName
-                                            ? day * standardRationsExpireDays
-                                            : day * ironRationsExpireDays;
-            const expirationDate = new Date(Date.now() + expirationDateValue);
-            const updatedName = `${document.name} (${expirationDate.toLocaleDateString()})`;
-            document.data.update({ name: updatedName });
-        }
+    if (document?.name === ironRationsItemName
+        || document?.name === standardRationsItemName) {
+        const day = 8.64e+7;
+        const ironRationsExpireDays = game.settings.get(moduleName, 'ironRationsExpireDays');
+        const standardRationsExpireDays = game.settings.get(moduleName, 'standardRationsExpireDays');
+        const expirationDateValue = document.name === standardRationsItemName
+                                        ? day * standardRationsExpireDays
+                                        : day * ironRationsExpireDays;
+        const expirationDate = new Date(Date.now() + expirationDateValue);
+        const updatedName = `${document.name} (${expirationDate.toLocaleDateString()})`;
+        document.data.update({ name: updatedName });
     }
 });
