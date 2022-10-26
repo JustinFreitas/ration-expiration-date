@@ -20,7 +20,7 @@ Hooks.on('init', function() {
         scope: world,
         config: true,
         type: Number,
-        default: 28,
+        default: 56,
         onChange: value => {
           console.log(value);
         },
