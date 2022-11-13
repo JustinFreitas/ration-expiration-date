@@ -56,8 +56,10 @@ Hooks.on('preCreateItem', (document) => {
     const ironRationsItemName = game.settings.get(moduleName, 'ironRationsItemName');
     const standardRationsItemName = game.settings.get(moduleName, 'standardRationsItemName');
 
-    if (document?.name === ironRationsItemName
-        || document?.name === standardRationsItemName) {
+    if (document?.ownership
+        && Object.keys(document.ownership).length > 1
+        && (document?.name === ironRationsItemName
+            || document?.name === standardRationsItemName)) {
         const day = 8.64e+7;
         const ironRationsExpireDays = game.settings.get(moduleName, 'ironRationsExpireDays');
         const standardRationsExpireDays = game.settings.get(moduleName, 'standardRationsExpireDays');
