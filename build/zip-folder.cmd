@@ -20,6 +20,7 @@ echo Set source = objShell.NameSpace(InputFolder) >> _zipIt.vbs
 echo Set objZip = objShell.NameSpace(fso.GetAbsolutePathName(ZipFile)) >> _zipIt.vbs
 echo if not (objZip is nothing) then  >> _zipIt.vbs
 echo objZip.CopyHere(source) >> _zipIt.vbs
+echo wScript.Sleep 500 >> _zipIt.vbs
 echo end if >> _zipIt.vbs
 
 @ECHO Zipping, please wait...
