@@ -53,16 +53,16 @@ Hooks.on('init', function() {
   
 Hooks.on('preCreateItem', (document) => {
     const moduleName = 'ration-expiration-date';
-    const ironRationsItemName = game.settings.get(moduleName, 'ironRationsItemName');
-    const standardRationsItemName = game.settings.get(moduleName, 'standardRationsItemName');
+    const ironRationsItemName = game.settings.get(moduleName, 'ironRationsItemName') || 'Rations, iron';
+    const standardRationsItemName = game.settings.get(moduleName, 'standardRationsItemName') || 'Rations, standard';
 
     if (document?.ownership
         && Object.keys(document.ownership).length > 1
         && (document?.name === ironRationsItemName
             || document?.name === standardRationsItemName)) {
         const day = 8.64e+7;
-        const ironRationsExpireDays = game.settings.get(moduleName, 'ironRationsExpireDays');
-        const standardRationsExpireDays = game.settings.get(moduleName, 'standardRationsExpireDays');
+        const ironRationsExpireDays = game.settings.get(moduleName, 'ironRationsExpireDays') || 56;
+        const standardRationsExpireDays = game.settings.get(moduleName, 'standardRationsExpireDays') || 14;
         const expirationDateValue = document.name === standardRationsItemName
                                         ? day * standardRationsExpireDays
                                         : day * ironRationsExpireDays;
