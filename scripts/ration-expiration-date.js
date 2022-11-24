@@ -17,7 +17,7 @@ Hooks.on("init", function() {
         scope: world,
         config: true,
         type: String,
-        default: IRON_RATIONS_ITEM_NAME_DEFAULT,
+        default: IRON_RATIONS_ITEM_NAME_DEFAULT
     });
 
     game.settings.register(MODULE_NAME, IRON_RATIONS_EXPIRE_DAYS, {
@@ -26,7 +26,7 @@ Hooks.on("init", function() {
         scope: world,
         config: true,
         type: Number,
-        default: IRON_RATIONS_EXPIRE_DAYS_DEFAULT,
+        default: IRON_RATIONS_EXPIRE_DAYS_DEFAULT
     });
 
     game.settings.register(MODULE_NAME, STANDARD_RATIONS_ITEM_NAME, {
@@ -35,7 +35,7 @@ Hooks.on("init", function() {
         scope: world,
         config: true,
         type: String,
-        default: STANDARD_RATIONS_ITEM_NAME_DEFAULT,
+        default: STANDARD_RATIONS_ITEM_NAME_DEFAULT
     });
 
     game.settings.register(MODULE_NAME, STANDARD_RATIONS_EXPIRE_DAYS, {
@@ -44,7 +44,7 @@ Hooks.on("init", function() {
         scope: world,
         config: true,
         type: Number,
-        default: STANDARD_RATIONS_EXPIRE_DAYS_DEFAULT,
+        default: STANDARD_RATIONS_EXPIRE_DAYS_DEFAULT
     });
 });
 
@@ -54,8 +54,8 @@ Hooks.on("preCreateItem", (document) => {
 
     if (document?.ownership
         && Object.keys(document.ownership).length > 1
-        && (document?.name === ironRationsItemName
-            || document?.name === standardRationsItemName)) {
+        && (document.name === ironRationsItemName
+            || document.name === standardRationsItemName)) {
         const day = 8.64e+7;
         const ironRationsExpireDays = game.settings.get(MODULE_NAME, IRON_RATIONS_EXPIRE_DAYS) || IRON_RATIONS_EXPIRE_DAYS_DEFAULT;
         const standardRationsExpireDays = game.settings.get(MODULE_NAME, STANDARD_RATIONS_EXPIRE_DAYS) || STANDARD_RATIONS_EXPIRE_DAYS_DEFAULT;
