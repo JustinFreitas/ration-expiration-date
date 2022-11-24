@@ -37,7 +37,7 @@ Hooks.on('init', function() {
         type: String,
         default: STANDARD_RATIONS_ITEM_NAME_DEFAULT,
     });
-      
+
     game.settings.register(MODULE_NAME, STANDARD_RATIONS_EXPIRE_DAYS, {
         name: 'Standard Rations Expire Days',
         hint: 'The number of days until standard rations expiration.',
@@ -47,7 +47,7 @@ Hooks.on('init', function() {
         default: STANDARD_RATIONS_EXPIRE_DAYS_DEFAULT,
     });
 });
-  
+
 Hooks.on('preCreateItem', (document) => {
     const ironRationsItemName = game.settings.get(MODULE_NAME, IRON_RATIONS_ITEM_NAME) || IRON_RATIONS_ITEM_NAME_DEFAULT;
     const standardRationsItemName = game.settings.get(MODULE_NAME, STANDARD_RATIONS_ITEM_NAME) || STANDARD_RATIONS_ITEM_NAME_DEFAULT;
