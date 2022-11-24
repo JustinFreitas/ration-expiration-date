@@ -1,4 +1,7 @@
 ## 1.0.4
+### Bugfixes
+- Removal of debugging onChange handler definition for settings registrations.
+
 ### Compatibility
 - Add CHANGELOG.md to have a single location for tracking change history conforming to the approach of other modules.
 

@@ -9,9 +9,6 @@ Hooks.on('init', function() {
         config: true,       // false if you dont want it to show in module config
         type: String,       // Number, Boolean, String, Object
         default: 'Rations, iron',
-        onChange: value => { // value is the new value of the setting
-          console.log(value);
-        },
     });
 
     game.settings.register(moduleName, 'ironRationsExpireDays', {
@@ -21,9 +18,6 @@ Hooks.on('init', function() {
         config: true,
         type: Number,
         default: 56,
-        onChange: value => {
-          console.log(value);
-        },
     });
 
     game.settings.register(moduleName, 'standardRationsItemName', {
@@ -33,9 +27,6 @@ Hooks.on('init', function() {
         config: true,
         type: String,
         default: 'Rations, standard',
-        onChange: value => {
-          console.log(value);
-        },
     });
       
     game.settings.register(moduleName, 'standardRationsExpireDays', {
@@ -45,9 +36,6 @@ Hooks.on('init', function() {
         config: true,
         type: Number,
         default: 14,
-        onChange: value => {
-          console.log(value);
-        },
     });
 });
   
