@@ -4,6 +4,7 @@
 
 ### Changed
 - Use constants instead of redundant string/number definitions.
+- Linter formatting.
 
 ### Removed
 - Removal of debugging onChange handler definition for settings registrations.
