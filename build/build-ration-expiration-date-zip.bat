@@ -6,3 +6,4 @@ cd out
 CALL ..\zip-folder ration-expiration-date
 rmdir /S /Q ration-expiration-date\
 cd ..
+explorer out
