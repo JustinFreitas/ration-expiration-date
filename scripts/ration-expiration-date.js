@@ -51,7 +51,7 @@ Hooks.on("init", function() {
 
     game.settings.register(MODULE_NAME, JSON_ARRAY_OF_ITEM_AND_DAY_TUPLES, {
         name: "JSON Array of Item and Day Tuples",
-        hint: "A way to supply more item/expiration-day combos beyond the hardcoded two above. Ex: [['Rations, ripe', 2], ['Rations, preserved', 365]]",
+        hint: "A way to supply more item/expiration-day combos beyond the hardcoded two above. Ex: [[\"Rations, ripe\", 2], [\"Rations, preserved\", 365]]",
         scope: world,
         config: true,
         type: String,
@@ -70,7 +70,7 @@ Hooks.on("preCreateItem", (document) => {
     ];
 
     const additionalItemsSettingValue = game.settings.get(MODULE_NAME, JSON_ARRAY_OF_ITEM_AND_DAY_TUPLES).toString();
-    const additionalItems = null;
+    let additionalItems = null;
     try {
         console.log(additionalItemsSettingValue);
         additionalItems = JSON.parse(additionalItemsSettingValue);

@@ -1,6 +1,6 @@
-## [1.1.0] - 2022-11-27
+## [1.1.0] - 2023-06-25
 ### Added
-- Added a new setting that excepts an array of name/days tuples to extend the item list.  Ex: [['Rations, ripe', 2], ['Rations, preserved', 365]]
+- Added a new setting that excepts an array of name/days tuples to extend the item list.  Ex: [["Rations, ripe", 2], ["Rations, preserved", 365]]
 
 ### Changed
 - Adapt existing iron/standard mechanism to utilize new tuple array mechanism by using those two as the first tuples.
