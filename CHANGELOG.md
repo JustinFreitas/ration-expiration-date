@@ -1,3 +1,12 @@
+## [1.1.0] - 2023-06-25
+### Added
+- Added a new setting that excepts an array of name/days tuples to extend the item list.  Ex: [["Rations, ripe", 2], ["Rations, preserved", 365]]
+
+### Changed
+- Adapt existing iron/standard mechanism to utilize new tuple array mechanism by using those two as the first tuples.
+- Linter formatting.
+
+
 ## [1.0.4] - 2022-11-24
 ### Added
 - Add CHANGELOG.md to have a single location for tracking change history conforming to the approach of other modules.
@@ -35,6 +44,7 @@
 ### Initial release
 - Initial release with hard coded names and date spans.
 
+[1.1.0]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.0.4...1.1.0
 [1.0.4]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.0.3...1.0.4
 [1.0.3]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.0.1...1.0.2

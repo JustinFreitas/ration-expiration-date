@@ -2,7 +2,7 @@
     "id": "ration-expiration-date",
     "title": "Ration Expiration Date",
     "description": "When dropping iron or standard rations into an inventory, this module will add a date to the title that is eight or two weeks out, respectively.",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "authors": [
         {
             "name": "Justin Freitas"
@@ -17,5 +17,5 @@
     ],
     "url": "https://github.com/JustinFreitas/ration-expiration-date/",
     "manifest": "https://raw.githubusercontent.com/JustinFreitas/ration-expiration-date/master/module.json",
-    "download": "https://github.com/JustinFreitas/ration-expiration-date/releases/download/1.0.4/ration-expiration-date.zip"
+    "download": "https://github.com/JustinFreitas/ration-expiration-date/releases/download/1.1.0/ration-expiration-date.zip"
 }
