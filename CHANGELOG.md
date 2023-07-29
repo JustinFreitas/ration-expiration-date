@@ -49,6 +49,7 @@
 ### Initial release
 - Initial release with hard coded names and date spans.
 
+[1.2.0]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.0.4...1.1.0
 [1.0.4]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.0.3...1.0.4
 [1.0.3]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.0.2...1.0.3
