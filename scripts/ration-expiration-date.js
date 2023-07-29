@@ -9,6 +9,7 @@ const STANDARD_RATIONS_ITEM_NAME = "standardRationsItemName";
 const STANDARD_RATIONS_ITEM_NAME_DEFAULT = "Rations, standard";
 const STANDARD_RATIONS_EXPIRE_DAYS = "standardRationsExpireDays";
 const STANDARD_RATIONS_EXPIRE_DAYS_DEFAULT = 14;
+const USE_SIMPLE_CALENDAR = "useSimpleCalendar";
 
 Hooks.on("init", function() {
     const world = "world";
@@ -57,6 +58,15 @@ Hooks.on("init", function() {
         type: String,
         default: ""
     });
+
+    game.settings.register(MODULE_NAME, USE_SIMPLE_CALENDAR, {
+		name: "Use SimpleCalendar",
+		hint: "Uses the SimpleCalendar instead of the real world calendar if that module is installed and active in the world.",
+		scope: world,
+		config: true,
+		type: Boolean,
+		default: false
+	});
 });
 
 Hooks.on("preCreateItem", (document) => {
@@ -96,12 +106,20 @@ function findNameAndReturnDays(tuples, name) {
 }
 
 function updateItemNameWithDate(document, days) {
-    if (days !== null) {
+    if (Number.isNaN(days)) return;
+    
+    const useSimpleCalendar = game.settings.get(MODULE_NAME, USE_SIMPLE_CALENDAR);
+    let expirationDateString;
+    if (useSimpleCalendar && SimpleCalendar) {
+        const currentTimestamp = SimpleCalendar.api.timestamp();
+        const expirationTimestamp = SimpleCalendar.api.timestampPlusInterval(currentTimestamp, {day: days});
+        expirationDateString = SimpleCalendar.api.formatTimestamp(expirationTimestamp, 'MM/DD/YYYY');
+    } else {
         const expirationDateValue = DAY * days;
-        if (!Number.isNaN(expirationDateValue)) {
-            const expirationDate = new Date(Date.now() + expirationDateValue);
-            const updatedName = `${document.name} (${expirationDate.toLocaleDateString()})`;
-            document.data.update({ name: updatedName });
-        }
+        const expirationDate = new Date(Date.now() + expirationDateValue);
+        expirationDateString = expirationDate.toLocaleDateString();
     }
+
+    const updatedName = `${document.name} (${expirationDateString})`;
+    document.data.update({ name: updatedName });
 }

@@ -4,3 +4,5 @@ A Foundry VTT module that will watch for the drag of ration items from the compe
 
 Added a new setting that excepts an array of name/days tuples to extend the item list so that custom items beyond the original two can be added in.
 Example, also shown in the settings UI: [["Rations, ripe", 2], ["Rations, preserved", 365]]
+
+Now, the module has an option in the settings to use SimpleCalendar.  That will work if the option is enabled and SimpleCalendar is installed and active in the world.
