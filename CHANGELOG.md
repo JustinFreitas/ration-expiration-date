@@ -1,3 +1,8 @@
+## [1.2.0] - 2023-07-29
+### Added
+- Added the option to use SimpleCalendar module as the expiration date source instead of the real world calendar.  That will work if the option is enabled and SimpleCalendar is installed and active in the world.
+
+
 ## [1.1.0] - 2023-06-25
 ### Added
 - Added a new setting that excepts an array of name/days tuples to extend the item list.  Ex: [["Rations, ripe", 2], ["Rations, preserved", 365]]
