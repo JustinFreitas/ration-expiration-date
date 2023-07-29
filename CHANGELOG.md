@@ -1,3 +1,8 @@
+## [1.2.1] - 2023-07-29
+### Changed
+- Fix for the expiration date being added to all items instead of just specified items.
+
+
 ## [1.2.0] - 2023-07-29
 ### Added
 - Added the option to use SimpleCalendar module as the expiration date source instead of the real world calendar.  That will work if the option is enabled and SimpleCalendar is installed and active in the world.
@@ -49,6 +54,7 @@
 ### Initial release
 - Initial release with hard coded names and date spans.
 
+[1.2.1]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.0.4...1.1.0
 [1.0.4]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.0.3...1.0.4

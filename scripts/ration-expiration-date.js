@@ -106,7 +106,7 @@ function findNameAndReturnDays(tuples, name) {
 }
 
 function updateItemNameWithDate(document, days) {
-    if (Number.isNaN(days)) return;
+    if (days == null || Number.isNaN(days)) return;
     
     const useSimpleCalendar = game.settings.get(MODULE_NAME, USE_SIMPLE_CALENDAR);
     let expirationDateString;
