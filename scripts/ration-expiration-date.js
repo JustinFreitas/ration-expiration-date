@@ -82,7 +82,9 @@ Hooks.on("preCreateItem", (document) => {
     const additionalItemsSettingValue = game.settings.get(MODULE_NAME, JSON_ARRAY_OF_ITEM_AND_DAY_TUPLES).toString();
     let additionalItems = null;
     try {
-        additionalItems = JSON.parse(additionalItemsSettingValue);
+        if (additionalItemsSettingValue) {
+            additionalItems = JSON.parse(additionalItemsSettingValue);
+        }
     } catch (err) {
         console.log(`Error parsing the item/days tuple array for ${MODULE_NAME}.`)
     }
