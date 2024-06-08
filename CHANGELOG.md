@@ -1,7 +1,10 @@
+## [1.3.0] - 2024-06-08
+### Changed
+- Change item rename to use system and updateSource() instead of the deprecated data and update() for v12 compatibility.
+
 ## [1.2.1] - 2023-07-29
 ### Changed
 - Fix for the expiration date being added to all items instead of just specified items.
-
 
 ## [1.2.0] - 2023-07-29
 ### Added

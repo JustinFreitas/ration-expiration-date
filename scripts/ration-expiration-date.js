@@ -121,5 +121,5 @@ function updateItemNameWithDate(document, days) {
     }
 
     const updatedName = `${document.name} (${expirationDateString})`;
-    document.data.update({ name: updatedName });
+    document.system.parent.updateSource({ name: updatedName });
 }
