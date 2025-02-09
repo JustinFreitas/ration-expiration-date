@@ -1,3 +1,9 @@
+## [1.3.1] - 2025-02-09
+### Changed
+- Changed the month and day format of the date in the SimpleCalendar case to be the short format (no leading zeros) to match the toLocaleDate() used without SimpleCalendar.
+### Fixed
+- Fixed the error thrown for SimpleCalendar not being defined by checking type instead of object existence.
+
 ## [1.3.0] - 2024-06-08
 ### Changed
 - Change item rename to use system and updateSource() instead of the deprecated data and update() for v12 compatibility.
@@ -57,6 +63,7 @@
 ### Initial release
 - Initial release with hard coded names and date spans.
 
+[1.3.1]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.2.1...1.3.0
 [1.2.1]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.1.0...1.2.0

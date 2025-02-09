@@ -86,7 +86,7 @@ Hooks.on("preCreateItem", (document) => {
             additionalItems = JSON.parse(additionalItemsSettingValue);
         }
     } catch (err) {
-        console.log(`Error parsing the item/days tuple array for ${MODULE_NAME}.`)
+        console.log(`Error parsing the item/days tuple array for ${MODULE_NAME}.`);
     }
 
     if (Array.isArray(additionalItems)) {
@@ -112,10 +112,10 @@ function updateItemNameWithDate(document, days) {
     
     const useSimpleCalendar = game.settings.get(MODULE_NAME, USE_SIMPLE_CALENDAR);
     let expirationDateString;
-    if (useSimpleCalendar && SimpleCalendar) {
+    if (useSimpleCalendar && typeof SimpleCalendar !== 'undefined') {
         const currentTimestamp = SimpleCalendar.api.timestamp();
         const expirationTimestamp = SimpleCalendar.api.timestampPlusInterval(currentTimestamp, {day: days});
-        expirationDateString = SimpleCalendar.api.formatTimestamp(expirationTimestamp, 'MM/DD/YYYY');
+        expirationDateString = SimpleCalendar.api.formatTimestamp(expirationTimestamp, 'M/D/YYYY');
     } else {
         const expirationDateValue = DAY * days;
         const expirationDate = new Date(Date.now() + expirationDateValue);
