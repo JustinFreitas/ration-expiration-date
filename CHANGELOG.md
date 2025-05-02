@@ -1,3 +1,7 @@
+## [1.3.2] - 2025-05-01
+### Changed
+- Changed the verified major version from 12 to 13 after some testing with it.
+
 ## [1.3.1] - 2025-02-09
 ### Changed
 - Changed the month and day format of the date in the SimpleCalendar case to be the short format (no leading zeros) to match the toLocaleDate() used without SimpleCalendar.
