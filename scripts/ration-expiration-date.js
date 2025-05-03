@@ -116,11 +116,17 @@ Hooks.on("init", function() {
 Hooks.on("preCreateItem", (document) => {
     const ironRationsItemName = game.settings.get(MODULE_NAME, IRON_RATIONS_ITEM_NAME);
     const standardRationsItemName = game.settings.get(MODULE_NAME, STANDARD_RATIONS_ITEM_NAME);
+    const freshFoodRationsItemName = game.settings.get(MODULE_NAME, FRESH_FOOD_RATIONS_ITEM_NAME);
+    const preservedMeatRationsItemName = game.settings.get(MODULE_NAME, PRESERVED_MEAT_RATIONS_ITEM_NAME);
     const ironRationsExpireDays = game.settings.get(MODULE_NAME, IRON_RATIONS_EXPIRE_DAYS);
     const standardRationsExpireDays = game.settings.get(MODULE_NAME, STANDARD_RATIONS_EXPIRE_DAYS);
+    const freshFoodRationsExpireDays = game.settings.get(MODULE_NAME, FRESH_FOOD_RATIONS_EXPIRE_DAYS);
+    const preservedMeatRationsExpireDays = game.settings.get(MODULE_NAME, PRESERVED_MEAT_RATIONS_EXPIRE_DAYS);
     const itemAndDayTuples = [
         [ironRationsItemName, ironRationsExpireDays],
-        [standardRationsItemName, standardRationsExpireDays]
+        [standardRationsItemName, standardRationsExpireDays],
+        [freshFoodRationsItemName, freshFoodRationsExpireDays],
+        [preservedMeatRationsItemName, preservedMeatRationsExpireDays]
     ];
 
     const additionalItemsSettingValue = game.settings.get(MODULE_NAME, JSON_ARRAY_OF_ITEM_AND_DAY_TUPLES).toString();
