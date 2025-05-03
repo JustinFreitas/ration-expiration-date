@@ -1,3 +1,7 @@
+## [1.4.1] - 2025-05-03
+### Changed
+- Fix for precreate hook.
+
 ## [1.4.0] - 2025-05-03
 ### Added
 - Add in two more entries for Fresh Food and Preserved Meat.
