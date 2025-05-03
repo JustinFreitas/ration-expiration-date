@@ -1,12 +1,20 @@
 const DAY = 8.64e+7;
 const MODULE_NAME = "ration-expiration-date";
+const FRESH_FOOD_RATIONS_ITEM_NAME = "freshFoodRationsItemName";
+const FRESH_FOOD_RATIONS_ITEM_NAME_DEFAULT = "Rations, Fresh Food";
+const FRESH_FOOD_RATIONS_EXPIRE_DAYS = "freshFoodRationsExpireDays";
+const FRESH_FOOD_RATIONS_EXPIRE_DAYS_DEFAULT = 28;
 const IRON_RATIONS_ITEM_NAME = "ironRationsItemName";
-const IRON_RATIONS_ITEM_NAME_DEFAULT = "Rations, iron";
+const IRON_RATIONS_ITEM_NAME_DEFAULT = "Rations, Iron";
 const IRON_RATIONS_EXPIRE_DAYS = "ironRationsExpireDays";
 const IRON_RATIONS_EXPIRE_DAYS_DEFAULT = 56;
 const JSON_ARRAY_OF_ITEM_AND_DAY_TUPLES = "jsonArrayOfItemAndDayTuples";
+const PRESERVED_MEAT_RATIONS_ITEM_NAME = "preservedMeatRationsItemName";
+const PRESERVED_MEAT_RATIONS_ITEM_NAME_DEFAULT = "Rations, Preserved Meat";
+const PRESERVED_MEAT_RATIONS_EXPIRE_DAYS = "preservedMeatRationsExpireDays";
+const PRESERVED_MEAT_RATIONS_EXPIRE_DAYS_DEFAULT = 28;
 const STANDARD_RATIONS_ITEM_NAME = "standardRationsItemName";
-const STANDARD_RATIONS_ITEM_NAME_DEFAULT = "Rations, standard";
+const STANDARD_RATIONS_ITEM_NAME_DEFAULT = "Rations, Standard";
 const STANDARD_RATIONS_EXPIRE_DAYS = "standardRationsExpireDays";
 const STANDARD_RATIONS_EXPIRE_DAYS_DEFAULT = 14;
 const USE_SIMPLE_CALENDAR = "useSimpleCalendar";
@@ -48,6 +56,42 @@ Hooks.on("init", function() {
         config: true,
         type: Number,
         default: STANDARD_RATIONS_EXPIRE_DAYS_DEFAULT
+    });
+
+    game.settings.register(MODULE_NAME, FRESH_FOOD_RATIONS_ITEM_NAME, {
+        name: "Fresh Food Rations Item Name",
+        hint: "The item name for Fresh Food Rations that will be used to match on inventory addition for expiration date stamping.",
+        scope: world,
+        config: true,
+        type: String,
+        default: FRESH_FOOD_RATIONS_ITEM_NAME_DEFAULT
+    });
+
+    game.settings.register(MODULE_NAME, FRESH_FOOD_RATIONS_EXPIRE_DAYS, {
+        name: "Fresh Food Rations Expire Days",
+        hint: "The number of days until fresh food rations expiration.",
+        scope: world,
+        config: true,
+        type: Number,
+        default: FRESH_FOOD_RATIONS_EXPIRE_DAYS_DEFAULT
+    });
+
+    game.settings.register(MODULE_NAME, PRESERVED_MEAT_RATIONS_ITEM_NAME, {
+        name: "Preserved Meat Rations Item Name",
+        hint: "The item name for Preserved Meat Rations that will be used to match on inventory addition for expiration date stamping.",
+        scope: world,
+        config: true,
+        type: String,
+        default: PRESERVED_MEAT_RATIONS_ITEM_NAME_DEFAULT
+    });
+
+    game.settings.register(MODULE_NAME, PRESERVED_MEAT_RATIONS_EXPIRE_DAYS, {
+        name: "Preserved Meat Rations Expire Days",
+        hint: "The number of days until preserved meat rations expiration.",
+        scope: world,
+        config: true,
+        type: Number,
+        default: PRESERVED_MEAT_RATIONS_EXPIRE_DAYS_DEFAULT
     });
 
     game.settings.register(MODULE_NAME, JSON_ARRAY_OF_ITEM_AND_DAY_TUPLES, {
@@ -101,7 +145,8 @@ Hooks.on("preCreateItem", (document) => {
 });
 
 function findNameAndReturnDays(tuples, name) {
-    const matchedItemTuple = tuples.find((tuple) => Array.isArray(tuple) && tuple[0] === name);
+    const regex = new RegExp(name, "i");
+    const matchedItemTuple = tuples.find((tuple) => Array.isArray(tuple) && tuple[0].match(regex));
     return matchedItemTuple === undefined
             ? null
             : matchedItemTuple[1];

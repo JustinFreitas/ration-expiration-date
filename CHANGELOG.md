@@ -1,3 +1,10 @@
+## [1.4.0] - 2025-05-03
+### Added
+- Add in two more entries for Fresh Food and Preserved Meat.
+### Changed
+- Changed the name matches to be case insensitive.
+- Changed the existing names to have leading caps on all words (i.e. Rations, iron to Rations, Iron).
+
 ## [1.3.2] - 2025-05-01
 ### Changed
 - Changed the verified major version from 12 to 13 after some testing with it.
