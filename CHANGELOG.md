@@ -1,3 +1,10 @@
+## [1.5.0] - 2026-05-30
+### Changed
+- Updated for Foundry VTT v14 compatibility.
+- Modernized `preCreateItem` hook signature.
+- Improved Actor detection logic for inventory additions.
+- Optimized item name updates using direct `updateSource` call.
+
 ## [1.4.1] - 2025-05-03
 ### Changed
 - Fix for precreate hook.

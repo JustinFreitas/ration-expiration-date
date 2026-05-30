@@ -2,15 +2,15 @@
     "id": "ration-expiration-date",
     "title": "Ration Expiration Date",
     "description": "When dropping iron, fresh food, preserved meat, or standard rations into an inventory, this module will add a date to the title that is some number of days out, depending.",
-    "version": "1.4.1",
+    "version": "1.5.0",
     "authors": [
         {
             "name": "Justin Freitas"
         }
     ],
     "compatibility": {
-        "minimum": "10",
-        "verified": "13"
+        "minimum": "12",
+        "verified": "14"
     },
     "scripts": [
         "scripts/ration-expiration-date.js"

@@ -113,7 +113,7 @@ Hooks.on("init", function() {
 	});
 });
 
-Hooks.on("preCreateItem", (document) => {
+Hooks.on("preCreateItem", (item, data, options, userId) => {
     const ironRationsItemName = game.settings.get(MODULE_NAME, IRON_RATIONS_ITEM_NAME);
     const standardRationsItemName = game.settings.get(MODULE_NAME, STANDARD_RATIONS_ITEM_NAME);
     const freshFoodRationsItemName = game.settings.get(MODULE_NAME, FRESH_FOOD_RATIONS_ITEM_NAME);
@@ -143,10 +143,9 @@ Hooks.on("preCreateItem", (document) => {
         itemAndDayTuples.push(...additionalItems);
     }
 
-    if (document?.ownership
-        && Object.keys(document.ownership).length > 1) {
-        const days = findNameAndReturnDays(itemAndDayTuples, document.name);
-        updateItemNameWithDate(document, days);
+    if (item.parent instanceof Actor) {
+        const days = findNameAndReturnDays(itemAndDayTuples, item.name);
+        updateItemNameWithDate(item, days);
     }
 });
 
@@ -158,7 +157,7 @@ function findNameAndReturnDays(tuples, name) {
             : matchedItemTuple[1];
 }
 
-function updateItemNameWithDate(document, days) {
+function updateItemNameWithDate(item, days) {
     if (days == null || Number.isNaN(days)) return;
     
     const useSimpleCalendar = game.settings.get(MODULE_NAME, USE_SIMPLE_CALENDAR);
@@ -173,6 +172,6 @@ function updateItemNameWithDate(document, days) {
         expirationDateString = expirationDate.toLocaleDateString();
     }
 
-    const updatedName = `${document.name} (${expirationDateString})`;
-    document.system.parent.updateSource({ name: updatedName });
+    const updatedName = `${item.name} (${expirationDateString})`;
+    item.updateSource({ name: updatedName });
 }
