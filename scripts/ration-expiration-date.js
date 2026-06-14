@@ -104,16 +104,16 @@ Hooks.on("init", function() {
     });
 
     game.settings.register(MODULE_NAME, USE_SIMPLE_CALENDAR, {
-		name: "Use SimpleCalendar",
-		hint: "Uses the SimpleCalendar instead of the real world calendar if that module is installed and active in the world.",
-		scope: world,
-		config: true,
-		type: Boolean,
-		default: false
-	});
+        name: "Use SimpleCalendar",
+        hint: "Uses the SimpleCalendar instead of the real world calendar if that module is installed and active in the world.",
+        scope: world,
+        config: true,
+        type: Boolean,
+        default: false
+    });
 });
 
-Hooks.on("preCreateItem", (item, data, options, userId) => {
+Hooks.on("preCreateItem", (item) => {
     const ironRationsItemName = game.settings.get(MODULE_NAME, IRON_RATIONS_ITEM_NAME);
     const standardRationsItemName = game.settings.get(MODULE_NAME, STANDARD_RATIONS_ITEM_NAME);
     const freshFoodRationsItemName = game.settings.get(MODULE_NAME, FRESH_FOOD_RATIONS_ITEM_NAME);
@@ -131,12 +131,14 @@ Hooks.on("preCreateItem", (item, data, options, userId) => {
 
     const additionalItemsSettingValue = game.settings.get(MODULE_NAME, JSON_ARRAY_OF_ITEM_AND_DAY_TUPLES).toString();
     let additionalItems = null;
-    try {
-        if (additionalItemsSettingValue) {
+    if (additionalItemsSettingValue) {
+        try {
             additionalItems = JSON.parse(additionalItemsSettingValue);
+        } catch (err) {
+            const message = `Error parsing the item/days tuple array for ${MODULE_NAME}: ${err.message}`;
+            console.error(message);
+            ui.notifications?.error(message);
         }
-    } catch (err) {
-        console.log(`Error parsing the item/days tuple array for ${MODULE_NAME}.`);
     }
 
     if (Array.isArray(additionalItems)) {
@@ -149,16 +151,27 @@ Hooks.on("preCreateItem", (item, data, options, userId) => {
     }
 });
 
+// Returns true if the item name already ends with a parenthesized date stamp, ex.: "Rations, Iron (11/13/2022)".
+function hasExpirationStamp(name) {
+    return /\([^()]*\d{1,4}[/-]\d{1,2}[/-]\d{1,4}[^()]*\)\s*$/.test(name);
+}
+
 function findNameAndReturnDays(tuples, name) {
-    const regex = new RegExp(name, "i");
-    const matchedItemTuple = tuples.find((tuple) => Array.isArray(tuple) && tuple[0].match(regex));
-    return matchedItemTuple === undefined
-            ? null
-            : matchedItemTuple[1];
+    if (hasExpirationStamp(name)) return null;
+
+    const haystack = name.toLowerCase();
+    const matchedItemTuple = tuples.find((tuple) =>
+        Array.isArray(tuple) &&
+        typeof tuple[0] === "string" &&
+        haystack.includes(tuple[0].toLowerCase()));
+    if (matchedItemTuple === undefined) return null;
+
+    const days = Number(matchedItemTuple[1]);
+    return Number.isFinite(days) ? days : null;
 }
 
 function updateItemNameWithDate(item, days) {
-    if (days == null || Number.isNaN(days)) return;
+    if (days == null || !Number.isFinite(days)) return;
     
     const useSimpleCalendar = game.settings.get(MODULE_NAME, USE_SIMPLE_CALENDAR);
     let expirationDateString;

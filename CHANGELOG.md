@@ -1,3 +1,13 @@
+## [1.5.1] - 2026-06-14
+### Fixed
+- Item name matching no longer treats the dropped item name as a regular expression, which could throw on names containing special characters (e.g. parentheses) and break item creation.
+- Matching direction corrected: the configured ration name is now matched as a case-insensitive substring of the dropped item's name.
+- Re-dropping an already-stamped item no longer appends a second expiration date.
+- Custom item/day tuples with non-numeric day values are now ignored instead of producing an "Invalid Date" stamp.
+- Malformed JSON in the custom tuples setting is now surfaced via a UI notification.
+### Changed
+- Consistent indentation; dropped unused `preCreateItem` hook parameters.
+
 ## [1.5.0] - 2026-05-30
 ### Changed
 - Updated for Foundry VTT v14 compatibility.
@@ -85,6 +95,11 @@
 ### Initial release
 - Initial release with hard coded names and date spans.
 
+[1.5.1]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.5.0...1.5.1
+[1.5.0]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.4.1...1.5.0
+[1.4.1]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.4.0...1.4.1
+[1.4.0]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.3.2...1.4.0
+[1.3.2]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.3.1...1.3.2
 [1.3.1]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.2.1...1.3.0
 [1.2.1]: https://github.com/JustinFreitas/ration-expiration-date/compare/1.2.0...1.2.1
